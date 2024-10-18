@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,27 +26,49 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.elarreglador.jetpackcomposetutorial.ui.theme.JetpackComposeTutorialTheme
 
+data class MyList(val title: String, val body: String)
+
+private val mensajes: List<MyList> = listOf(
+    MyList(" 01","One piece"),
+    MyList(" 02","Second life"),
+    MyList(" 03","Tercera Ley de Newton o Principio de Acción y Reacción "),
+    MyList(" 04","Cuarto poder"),
+    MyList(" 05","Quinto elemento, peliculon!"),
+    MyList(" 06","Sex pistols"),
+    MyList(" 07","Seven nation army"),
+    MyList(" 08","Ocho es multiplo de dos y de cuatro"),
+    MyList(" 09","99 Luftballons"),
+    MyList(" 10","teen titans go")
+)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComposeTutorialTheme {
-                MyComponent()
+                MyMessages(mensajes)
             }
-            MyComponent()
         }
     }
 }
 
 
 @Composable
-fun MyComponent() {
+fun MyMessages(mensajes: List<MyList>){
+    LazyColumn {
+        items(mensajes) { mensajes ->
+            MyComponent(mensajes)
+        }
+    }
+}
+
+
+@Composable
+fun MyComponent(mensajes: MyList) {
     Row(modifier = Modifier
         .padding(18.dp)
-        .background(MaterialTheme.colorScheme.background)
-    ) {
+        .background(MaterialTheme.colorScheme.background)) {
         MyImage()
-        MyTexts()
+        MyTexts(mensajes)
     }
 }
 
@@ -63,16 +87,16 @@ fun MyImage(){
 
 
 @Composable
-fun MyTexts(){
+fun MyTexts(mensajes: MyList){
     Column {
         MyText(
-            "Hola Jetpack Compose!",
+            mensajes.title,
             MaterialTheme.colorScheme.primary,
             MaterialTheme.typography.titleMedium
         )
         Spacer(modifier = Modifier.height(16.dp))
         MyText(
-            "Preparado?",
+            mensajes.body,
             MaterialTheme.colorScheme.onBackground,
             MaterialTheme.typography.titleSmall
         )
@@ -88,11 +112,14 @@ fun MyText(text: String, color: Color, style: TextStyle){
         style = style)
 }
 
-@Preview(name = "Modo Dia")
+
 @Preview(
-    name = "Modo Noche",
-    uiMode = Configuration.UI_MODE_NIGHT_YES)
+    name = "Modo Dia",
+    showSystemUi = true
+)
 @Composable
 fun PreviewComponents(){
-    MyComponent()
+    JetpackComposeTutorialTheme {
+        MyMessages(mensajes)
+    }
 }
