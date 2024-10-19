@@ -12,7 +12,3 @@ https://www.youtube.com/watch?v=_JO4Xxx0vb0&list=PLNdFk2_brsRclwvl8ruCo_q36jVbXc
 
 JETPACK COMPOSE desde CERO: Animaciones | #4
 https://www.youtube.com/watch?v=nNaE2uJQIpo&list=PLNdFk2_brsRclwvl8ruCo_q36jVbXcCCx&index=4&ab_channel=MoureDevbyBraisMoure
-
-CÓMO Navegar entre Pantallas en JETPACK COMPOSE | #5
-https://www.youtube.com/watch?v=eNuaMn4ukdo&list=PLNdFk2_brsRclwvl8ruCo_q36jVbXcCCx&index=5&ab_channel=MoureDevbyBraisMoure
-
