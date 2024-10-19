@@ -49,12 +49,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComposeTutorialTheme {
-                MyMessages(mensajes)
+                MyApp()
             }
         }
     }
 }
 
+@Composable
+private fun MyApp() {
+    MyMessages(mensajes)
+}
 
 @Composable
 fun MyMessages(mensajes: List<MyList>){
@@ -132,11 +136,12 @@ fun MyText(text: String, color: Color, style: TextStyle, lines: Int = Int.MAX_VA
 
 @Preview(
     name = "Modo Dia",
-    showSystemUi = true
+    showSystemUi = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
 )
 @Composable
 fun PreviewComponents(){
     JetpackComposeTutorialTheme {
-        MyMessages(mensajes)
+        MyApp()
     }
 }
